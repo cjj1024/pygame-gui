@@ -2,6 +2,7 @@ import sys
 import pygame
 
 from button import *
+from gui import *
 
 
 pygame.init()
@@ -10,14 +11,21 @@ pygame.display.set_caption('GUI')
 
 
 def main():
-    gui_group = pygame.sprite.Group()
-    button1 = Button(pos=(100, 100))
-    gui_group.add(button1)
+    gui = GUI()
+    button1 = Button()
+
+    img1 = pygame.image.load('./res/button_light_blue.png')
+    img2 = pygame.image.load('./res/button_yellow.png')
+    img3 = pygame.image.load('./res/button_blue.png')
+    button2 = Button(pos=(0, 100), normal_image=img1, hover_image=img3, active_image=img2)
+    gui.add_button(button2)
+    gui.add_button(button1)
+
 
     clock = pygame.time.Clock()
     while True:
-        gui_group.update()
-        gui_group.draw(screen)
+        gui.update()
+        gui.draw(screen)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit(0)
