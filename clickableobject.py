@@ -1,19 +1,53 @@
 import pygame
 import sys
 
-from clickableobjectconstant import *
+from constant import *
 
 
 class ClickableObject(pygame.sprite.Sprite):
-    def __init__(self, size=INIT_CLICKABLE_OBJECT_SIZE, pos=INIT_CLICKABLE_OBJECT_POS):
+    def __init__(self, size=INIT_CLICKABLE_OBJECT_SIZE, pos=INIT_CLICKABLE_OBJECT_POS,
+                 text=None, text_size=INIT_MENUITEM_TEXT_SIZE, text_color=INIT_MENUITEM_TEXT_COLOR):
         pygame.sprite.Sprite.__init__(self)
-
 
         self.size = size
         self.image = pygame.Surface(self.size)
         self.image.fill(INIT_CLICKABLE_OBJECT_COLOR)
         self.rect = self.image.get_rect()
         self.rect.x, self.rect.y = pos
+
+        self.change_status = False
+
+        if text:
+            # 按钮文字
+            self.text = text
+            # 按钮文字大小
+            self.text_size = text_size
+            # 按钮文字颜色
+            self.text_color = text_color
+            self.init_text()
+            self.set_image(self.image)
+
+
+
+    def init_text(self):
+        # 如果文字大小超过按钮大小， 则使用按钮的size
+        if self.rect.width / len(list(self.text)) > self.text_size:
+            self.text_size = self.text_size
+        else:
+            self.text_size = int(self.rect.width / len(list(self.text)))
+
+        self.font = pygame.font.Font('./res/minicanton.TTF', self.text_size)
+        self.text_image = self.font.render(self.text, True, self.text_color)
+
+
+    # 把背景图片与文字合并起来
+    def set_image(self, img):
+        self.image = img.copy()
+        # 使文字在图片中央
+        offset_x = int((self.image.get_width() - self.text_image.get_width()) / 2)
+        offset_y = int((self.image.get_height() - self.text_image.get_height()) / 2)
+        self.image.blit(self.text_image, (offset_x, offset_y))
+
 
     def update(self, *args):
         # 没有状态变化则返回
@@ -29,6 +63,7 @@ class ClickableObject(pygame.sprite.Sprite):
         elif self.status == ACTIVE:
             self.change_to_active()
             self.active()
+        self.change_status = False
 
     def check_event(self, event):
         if event.type == pygame.QUIT:
