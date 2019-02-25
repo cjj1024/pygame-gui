@@ -7,7 +7,7 @@ class Button(ClickableObject):
     def __init__(self, pos=INIT_BUTTON_POS, size=INIT_BUTTON_SIZE, text=INIT_BUTTON_TEXT,
                  text_size=INIT_BUTTON_TEXT_SIZE, text_color=INIT_BUTTON_TEXT_COLOR,
                  normal_image=None, hover_image=None, active_image=None):
-        ClickableObject.__init__(self, size=size, pos=pos, text=text, text_size=text_size, text_color=text_color)
+        ClickableObject.__init__(self, size=size, text=text, text_size=text_size, text_color=text_color)
 
         # 按钮正常颜色, 悬浮颜色, 点击颜色
         self.normal_color = INIT_BUTTON_NORMAL_COLOR

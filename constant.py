@@ -62,3 +62,10 @@ INIT_MENUITEM_TEXT_COLOR =   BLACK
 INIT_MENUBAR_POS =          (0, 0)
 
 
+# 默认输入框属性
+# 默认输入框大小
+INIT_INPUTBOX_SIZE =            (250, 30)
+INIT_INPUTBOX_POS =             (0, 0)
+INIT_INPUTBOX_TEXT =            ''
+INIT_INPUTBOX_COLOR =           WHITE
+INIT_INPUTBOX_TEXT_COLOR =      BLACK

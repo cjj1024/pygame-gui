@@ -3,6 +3,7 @@ from gui import *
 from menuitem import *
 from menubar import *
 from menu import *
+from inputbox import *
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
@@ -33,11 +34,14 @@ def main():
 
     menu2 = Menu(text='帮助')
     menubar.add_menu(menu2)
-    menu2.add_menuitem(MenuItem(text='关于'))
+    menu2.add_menuitem(MenuItem(text='About'))
     menu2.add_menuitem(MenuItem(text='退出'))
 
     gui.add_menubar(menubar)
 
+
+    inputbox = InputBox()
+    gui.add_inputbox(inputbox)
 
 
 

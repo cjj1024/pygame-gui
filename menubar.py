@@ -13,6 +13,8 @@ class MenuBar(ClickableObject):
 
         self.total_width = 0
 
+        self.rect.x, self.rect.y = pos
+
 
     def add_menu(self, menu):
         menu.rect.x = self.rect.x + self.total_width
@@ -26,8 +28,8 @@ class MenuBar(ClickableObject):
         self.menu_group.draw(screen)
 
 
-    def check_event(self, event):
-        super().check_event(event)
+    def process_event(self, event):
+        super().process_event(event)
 
         for menu in self.menu_group:
-            menu.check_event(event)
+            menu.process_event(event)
