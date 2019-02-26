@@ -24,6 +24,8 @@ class Button(ClickableObject):
         self.rect.x, self.rect.y = pos
 
 
+    # 如果有图片则用图片
+    # 没有用纯色
     def init_button(self):
         if self.normal_image:
             self.normal_image = pygame.transform.scale(self.normal_image, self.size)

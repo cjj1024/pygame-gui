@@ -33,3 +33,9 @@ class MenuBar(ClickableObject):
 
         for menu in self.menu_group:
             menu.process_event(event)
+
+
+    # rel为相对位移
+    def drag(self, rel):
+        for menu in self.menu_group:
+            menu.drag(rel)

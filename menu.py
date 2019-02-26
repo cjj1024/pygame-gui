@@ -37,3 +37,12 @@ class Menu(ClickableObject):
 
     def active(self):
         self.is_expand = not self.is_expand
+
+
+    # rel为相对位移
+    def drag(self, rel):
+        self.rect.x += rel[0]
+        self.rect.y += rel[1]
+        for menuitem in self.menuitem_group:
+            menuitem.rect.x += rel[0]
+            menuitem.rect.y += rel[1]

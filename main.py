@@ -4,6 +4,7 @@ from menuitem import *
 from menubar import *
 from menu import *
 from inputbox import *
+from widget import *
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
@@ -20,7 +21,7 @@ def main():
     button2 = Button(pos=(0, 100), normal_image=img1, hover_image=img3, active_image=img2)
     # gui.add_button(button2)
 
-    # menuitem = MenuItem(pos=(200, 0), text='菜单项')
+    menuitem = MenuItem(pos=(200, 0), text='菜单项')
     # gui.add_button(menuitem)
 
     menubar = MenuBar()
@@ -37,11 +38,18 @@ def main():
     menu2.add_menuitem(MenuItem(text='About'))
     menu2.add_menuitem(MenuItem(text='退出'))
 
-    gui.add_menubar(menubar)
+    # gui.add_menubar(menubar)
 
 
     inputbox = InputBox()
-    gui.add_inputbox(inputbox)
+    # gui.add_inputbox(inputbox)
+
+    widget = Widget(color=SPRINGGREEN)
+    # widget.add_inputbox(inputbox)
+    # widget.add_button(button1)
+    widget.add_menubar(menubar)
+    gui.add_widget(widget)
+
 
 
 
