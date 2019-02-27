@@ -44,13 +44,11 @@ def main():
     inputbox = InputBox()
     # gui.add_inputbox(inputbox)
 
-    widget = Widget(color=SPRINGGREEN)
+    widget = Widget(pos=(200, 200))
     # widget.add_inputbox(inputbox)
     # widget.add_button(button1)
     widget.add_menubar(menubar)
     gui.add_widget(widget)
-
-
 
 
     clock = pygame.time.Clock()
@@ -58,6 +56,7 @@ def main():
         screen.fill((230,230,250), (0, 0, 800, 600))
         gui.update(screen)
         for event in pygame.event.get():
+            gui.process_event(event)
             if event.type == pygame.QUIT:
                 sys.exit(0)
 

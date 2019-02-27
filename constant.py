@@ -7,6 +7,7 @@ WHITE =         (255, 255, 255)
 BLACK =         (0, 0, 0)
 DEEPSKYBLUE =   (0, 191, 255)
 SPRINGGREEN =   (0, 255, 127)
+GREY =          (220, 220, 220)
 
 
 # 可点击控件的状态
@@ -35,7 +36,7 @@ INIT_BUTTON_SIZE =              (120, 40)
 # 默认按钮颜色
 INIT_BUTTON_NORMAL_COLOR =      WHITE
 # 默认按钮悬浮颜色
-INIT_BUTTON_HOVER_COLOR =       DEEPSKYBLUE
+INIT_BUTTON_HOVER_COLOR =       RED
 # 默认按钮点击颜色
 INIT_BUTTON_ACTIVE_COLOR =      SPRINGGREEN
 # 默认按钮文字

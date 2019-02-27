@@ -40,6 +40,11 @@ class ClickableObject(pygame.sprite.Sprite):
             self.set_image(self.image)
 
 
+        self.normal_function = None
+        self.active_function = None
+        self.hover_function = None
+
+
 
     def init_text(self):
         if self.text == '':
@@ -90,9 +95,7 @@ class ClickableObject(pygame.sprite.Sprite):
     # 当有鼠标点击事件时, 判断鼠标是否在控件区域内, 如果在, 则状态改为active
     # 当有鼠标按键松开事件时, 判断鼠标是否在控件区域内, 如果在, 则状态改为hover, 否则改为normal
     def process_event(self, event):
-        if event.type == pygame.QUIT:
-            sys.exit(0)
-        elif event.type == pygame.MOUSEMOTION:
+        if event.type == pygame.MOUSEMOTION:
             x, y = event.pos
             if self.is_in_object_area(x, y):
                 self.status = HOVER
@@ -132,7 +135,8 @@ class ClickableObject(pygame.sprite.Sprite):
 
     # 普通状态
     def normal(self):
-        pass
+        if self.normal_function:
+            self.normal_function()
 
 
     # 状态转为普通状态
@@ -142,7 +146,8 @@ class ClickableObject(pygame.sprite.Sprite):
 
     # 鼠标指针悬浮在控件上方
     def hover(self):
-        pass
+        if self.hover_function:
+            self.hover_function()
 
 
     # 状态转为点击状态
@@ -152,4 +157,23 @@ class ClickableObject(pygame.sprite.Sprite):
 
     # 点击状态
     def active(self):
-        pass
+        if self.active_function:
+            self.active_function()
+
+
+    def bind_normal(self, func):
+        self.normal_function = func
+
+
+    def bind_hover(self, func):
+        self.hover_function = func
+
+
+    def bind_active(self, func):
+        self.active_function = func
+
+
+
+    def adjust_pos(self, x, y):
+        self.rect.x += x
+        self.rect.y += y

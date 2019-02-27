@@ -3,6 +3,7 @@ import sys
 
 from constant import *
 from gui import *
+from button import *
 
 
 class Widget(GUI, pygame.sprite.Sprite):
@@ -15,6 +16,7 @@ class Widget(GUI, pygame.sprite.Sprite):
 
         self.background = pygame.Surface(self.size)
         self.background.fill(self.color)
+        pygame.draw.line(self.background, GREY, (0, 30), (size[1], 30))
 
         self.image = self.background.copy()
         self.rect = self.image.get_rect()
@@ -25,13 +27,31 @@ class Widget(GUI, pygame.sprite.Sprite):
 
         self.screen = pygame.display.get_surface()
 
+        self.init_widget()
+
+
+    def init_widget(self):
+        exit_button = Button(text='X', size=(30, 30), pos=(self.rect.width - 30, 0))
+        exit_button.bind_active(self.destroy)
+        self.add_button(exit_button)
+
+
+    def destroy(self):
+        for button in self.button_group:
+            button.kill()
+        for menubar in self.menubar_group:
+            menubar.kill()
+        for inputbox in self.inputbox_group:
+            inputbox.kill()
+        for widget in self.widget_group:
+            widget.kill()
+
+        self.kill()
+
 
     def update(self, screen):
         self.screen.blit(self.image, self.rect)
         super().update(screen)
-
-        # for menubar in self.menubar_group:
-        #     self.screen.blit(menubar.image, menubar.rect)
 
 
     def process_event(self, event):
@@ -86,3 +106,8 @@ class Widget(GUI, pygame.sprite.Sprite):
 
     def check_event(self):
         pass
+
+
+    def adjust_pos(self, x, y):
+        self.rect.x += x
+        self.rect.y += y

@@ -39,3 +39,9 @@ class MenuBar(ClickableObject):
     def drag(self, rel):
         for menu in self.menu_group:
             menu.drag(rel)
+
+
+    def adjust_pos(self, x, y):
+        super().adjust_pos(x, y)
+        for menu in self.menu_group:
+            menu.adjust_pos(x, y)
