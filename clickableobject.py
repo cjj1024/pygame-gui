@@ -1,5 +1,4 @@
 import pygame
-import sys
 
 from constant import *
 
@@ -10,67 +9,15 @@ from constant import *
 # hover 鼠标悬浮在控件上方
 # active 鼠标点击控件
 # 当发生状态改变时会调用相应的状态改变函数和状态函数
-class ClickableObject(pygame.sprite.Sprite):
-    def __init__(self, size=INIT_CLICKABLE_OBJECT_SIZE, pos=INIT_CLICKABLE_OBJECT_POS,
-                 color=INIT_CLICKABLE_OBJECT_COLOR,
-                 text=None, text_size=INIT_MENUITEM_TEXT_SIZE, text_color=INIT_MENUITEM_TEXT_COLOR):
-        pygame.sprite.Sprite.__init__(self)
-
-        # 控件大小
-        self.size = size
-        # 控件背景色
-        self.color = color
-        self.image = pygame.Surface(self.size)
-        self.image.fill(self.color)
-        self.text_image = None
-        self.rect = self.image.get_rect()
-        self.rect.x, self.rect.y = pos
-
-        # 标记状态是否发生改变
-        self.change_status = False
-
-        if text != None:
-            # 按钮文字
-            self.text = text
-            # 按钮文字大小
-            self.text_size = text_size
-            # 按钮文字颜色
-            self.text_color = text_color
-            self.init_text()
-            self.set_image(self.image)
-
-
+class ClickableObject():
+    def __init__(self, pos, size):
         self.normal_function = None
         self.active_function = None
         self.hover_function = None
 
+        self.rect = pygame.Rect(pos, size)
 
-
-    def init_text(self):
-        if self.text == '':
-            return
-
-        # 如果文字大小超过控件大小， 则使用控件的size
-        if self.rect.width / len(list(self.text)) > self.text_size:
-            self.text_size = self.text_size
-        else:
-            self.text_size = int(self.rect.width / len(list(self.text)))
-
-        self.font = pygame.font.Font('./res/fatrolling.TTF', self.text_size)
-        self.text_image = self.font.render(self.text, True, self.text_color)
-
-
-    # 把背景图片与文字合并起来
-    def set_image(self, img):
-        if not self.text_image:
-            return
-
-        # 使用copy(), 避免修改原图片
-        self.image = img.copy()
-        # 使文字在图片中央
-        offset_x = int((self.image.get_width() - self.text_image.get_width()) / 2)
-        offset_y = int((self.image.get_height() - self.text_image.get_height()) / 2)
-        self.image.blit(self.text_image, (offset_x, offset_y))
+        self.change_status = False
 
 
     def update(self, *args):
@@ -171,7 +118,6 @@ class ClickableObject(pygame.sprite.Sprite):
 
     def bind_active(self, func):
         self.active_function = func
-
 
 
     def adjust_pos(self, x, y):

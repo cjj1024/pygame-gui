@@ -1,24 +1,22 @@
-import pygame
-
-from clickableobject import *
 from menu import *
 from constant import *
 
 
-class MenuBar(ClickableObject):
+class MenuBar(pygame.sprite.Sprite):
     def __init__(self, pos=INIT_MENUBAR_POS):
-        ClickableObject.__init__(self)
+        pygame.sprite.Sprite.__init__(self)
 
         self.menu_group = pygame.sprite.Group()
 
         self.total_width = 0
 
-        self.rect.x, self.rect.y = pos
+        self.image = None
+        self.rect = pygame.Rect(pos, (0, 0))
 
 
     def add_menu(self, menu):
         menu.rect.x = self.rect.x + self.total_width
-        menu.rect.y = self.rect.y
+        menu.rect.y = self.rect.y + 5
         self.total_width += menu.rect.width
         self.menu_group.add(menu)
 
@@ -29,8 +27,6 @@ class MenuBar(ClickableObject):
 
 
     def process_event(self, event):
-        super().process_event(event)
-
         for menu in self.menu_group:
             menu.process_event(event)
 
@@ -42,6 +38,5 @@ class MenuBar(ClickableObject):
 
 
     def adjust_pos(self, x, y):
-        super().adjust_pos(x, y)
         for menu in self.menu_group:
             menu.adjust_pos(x, y)

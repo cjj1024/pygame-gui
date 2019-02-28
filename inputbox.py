@@ -1,17 +1,24 @@
-import pygame
-
 from clickableobject import *
+from textobject import *
 from constant import *
 
 
-class InputBox(ClickableObject):
-    def __init__(self, size=INIT_INPUTBOX_SIZE, pos=INIT_INPUTBOX_POS, color=INIT_INPUTBOX_COLOR,
-                 text=INIT_INPUTBOX_TEXT, text_color=INIT_INPUTBOX_TEXT_COLOR):
-        ClickableObject.__init__(self, size=size, color=color, text=text, text_color=text_color)
+class InputBox(ClickableObject, TextObject, pygame.sprite.Sprite):
+    def __init__(self, size=INIT_INPUTBOX_SIZE, pos=INIT_INPUTBOX_POS, text=INIT_INPUTBOX_TEXT,
+                 text_size=INIT_INPUTBOX_TEXT_SIZE, text_color=INIT_INPUTBOX_TEXT_COLOR):
+        pygame.sprite.Sprite.__init__(self)
+
+        ClickableObject.__init__(self, pos=pos, size=size)
+
+        TextObject.__init__(self, text=text, text_size=text_size, text_color=text_color)
 
         self.rect.x, self.rect.y = pos
 
-        self.background_image = self.image.copy()
+        self.background_image = pygame.Surface(size)
+        self.background_image.fill(INIT_INPUTBOX_COLOR, self.background_image.get_rect())
+
+        self.image = self.background_image.copy()
+
 
         self.is_enable_input = False
 
@@ -25,9 +32,7 @@ class InputBox(ClickableObject):
         elif key >= 97 and key <= 122 or key >= 48 and key <= 57:
             self.text += chr(key)
 
-        print(self.text)
-        self.init_text()
-        self.set_image(self.background_image.copy())
+        self.merge_text_image(self.text, self.text_size, self.text_color, self.background_image)
 
 
     def process_event(self, event):

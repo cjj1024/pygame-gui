@@ -13,6 +13,7 @@ class Widget(GUI, pygame.sprite.Sprite):
 
         self.size = size
         self.color = color
+        self.offset = (0, TITLE_BAR_HEIGHT)
 
         self.background = pygame.Surface(self.size)
         self.background.fill(self.color)
@@ -31,7 +32,7 @@ class Widget(GUI, pygame.sprite.Sprite):
 
 
     def init_widget(self):
-        exit_button = Button(text='X', size=(30, 30), pos=(self.rect.width - 30, 0))
+        exit_button = Button(text='X', size=(30, 30), pos=(self.rect.width - 30, -TITLE_BAR_HEIGHT))
         exit_button.bind_active(self.destroy)
         self.add_button(exit_button)
 

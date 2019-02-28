@@ -8,7 +8,10 @@ BLACK =         (0, 0, 0)
 DEEPSKYBLUE =   (0, 191, 255)
 SPRINGGREEN =   (0, 255, 127)
 GREY =          (220, 220, 220)
-
+DARKSEAGREEN =  (193, 255, 193)
+SEAGREEN =      (67, 205, 128)
+LIGHTSKYBLUE1 = (176, 226, 255)
+LIGHTSKYBLUE2 = (164, 211, 238)
 
 # 可点击控件的状态
 # 正常状态
@@ -17,15 +20,6 @@ NORMAL = 0
 HOVER = 1
 # 点击状态
 ACTIVE = 2
-
-
-# 默认可点击控件属性
-# 默认可点击控件位置
-INIT_CLICKABLE_OBJECT_POS =         (0, 0)
-# 默认可点击控件大小
-INIT_CLICKABLE_OBJECT_SIZE =        (120, 40)
-# 默认可点击控件颜色
-INIT_CLICKABLE_OBJECT_COLOR =       WHITE
 
 
 # 默认按钮属性
@@ -45,6 +39,23 @@ INIT_BUTTON_TEXT =              'Button'
 INIT_BUTTON_TEXT_SIZE =         32
 # 默认按钮文字颜色
 INIT_BUTTON_TEXT_COLOR =        BLACK
+
+
+# 默认菜单属性
+# 默认菜单大小
+INIT_MENU_SIZE =                (40, 20)
+# 默认菜单位置
+INIT_MENU_POS =                 (0, 0)
+# 默认菜单背景颜色
+INIT_MENU_COLOR =               WHITE
+# 默认菜单悬浮颜色
+INIT_MENU_HOVER_COLOR =         LIGHTSKYBLUE1
+# 默认菜单点击颜色
+INIT_MENU_ACTIVE_COLOR =        LIGHTSKYBLUE2
+# 默认菜单文字大小
+INIT_MENU_TEXT_SIZE =           32
+# 默认菜单文字颜色
+INIT_MENU_TEXT_COLOR =          BLACK
 
 
 # 默认菜单项属性
@@ -70,6 +81,8 @@ INIT_INPUTBOX_SIZE =            (250, 30)
 INIT_INPUTBOX_POS =             (0, 0)
 # 默认输入框文字
 INIT_INPUTBOX_TEXT =            ''
+# 默认输入框文字大小
+INIT_INPUTBOX_TEXT_SIZE =       32
 # 默认输入框背景颜色
 INIT_INPUTBOX_COLOR =           WHITE
 # 默认输入框文字颜色
@@ -83,3 +96,5 @@ INIT_WIDGET_SIZE =              (400, 400)
 INIT_WIDGET_COLOR =             WHITE
 # 默认窗口位置
 INIT_WIDGET_POS =               (0, 0)
+# 标题栏高度
+TITLE_BAR_HEIGHT =              30

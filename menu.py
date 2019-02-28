@@ -1,14 +1,12 @@
-import pygame
-
-from clickableobject import *
-from constant import *
 from menuitem import *
 
 
-class Menu(ClickableObject):
-    def __init__(self, size=INIT_MENUITEM_SIZE, pos=INIT_MENUITEM_POS,
-                 text=None, text_size=INIT_MENUITEM_TEXT_SIZE, text_color=INIT_MENUITEM_TEXT_COLOR):
-        ClickableObject.__init__(self, size=size, text=text, text_size=text_size, text_color=text_color)
+class Menu(Button):
+    def __init__(self, size=INIT_MENU_SIZE, pos=INIT_MENU_POS,
+                 text=None, text_size=INIT_MENU_TEXT_SIZE, text_color=INIT_MENU_TEXT_COLOR):
+        Button.__init__(self, size=size, text=text, text_size=text_size, text_color=text_color,
+                        normal_color=INIT_MENU_COLOR, hover_color=INIT_MENU_HOVER_COLOR,
+                        active_color=INIT_MENU_ACTIVE_COLOR)
 
         self.rect.x, self.rect.y = pos
 
@@ -51,3 +49,6 @@ class Menu(ClickableObject):
 
         for menuitem in self.menuitem_group:
             menuitem.adjust_pos(x, y)
+
+
+
