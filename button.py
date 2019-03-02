@@ -5,14 +5,14 @@ from constant import *
 
 
 class Button(ClickableObject, StateChangeableObject, TextObject, pygame.sprite.Sprite):
-    def __init__(self, pos=INIT_BUTTON_POS, size=INIT_BUTTON_SIZE, text=INIT_BUTTON_TEXT,
+    def __init__(self, size=INIT_BUTTON_SIZE, text=INIT_BUTTON_TEXT,
                  text_size=INIT_BUTTON_TEXT_SIZE, text_color=INIT_BUTTON_TEXT_COLOR,
                  normal_color=INIT_BUTTON_NORMAL_COLOR, hover_color=INIT_BUTTON_HOVER_COLOR,
                  active_color=INIT_BUTTON_ACTIVE_COLOR,
                  normal_image=None, hover_image=None, active_image=None):
         pygame.sprite.Sprite.__init__(self)
 
-        ClickableObject.__init__(self, pos=pos, size=size)
+        ClickableObject.__init__(self, size=size)
 
         StateChangeableObject.__init__(
             self, size=size,
@@ -24,7 +24,6 @@ class Button(ClickableObject, StateChangeableObject, TextObject, pygame.sprite.S
         self.init_button()
 
         self.rect = self.image.get_rect()
-        self.rect.x, self.rect.y = pos
 
 
     # 如果有图片则用图片
@@ -39,7 +38,7 @@ class Button(ClickableObject, StateChangeableObject, TextObject, pygame.sprite.S
 
 
     def set_image(self, image):
-        self.merge_text_image(self.text, self.text_size, self.text_color, image)
+        self.image = self.merge_text_image(self.text, self.text_size, self.text_color, image)
 
 
     # 状态转为普通状态

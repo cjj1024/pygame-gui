@@ -1,3 +1,9 @@
+import pygame
+
+pygame.init()
+screen = pygame.display.set_mode((800, 600))
+pygame.display.set_caption('GUI')
+
 from button import *
 from gui import *
 from menuitem import *
@@ -5,10 +11,7 @@ from menubar import *
 from menu import *
 from inputbox import *
 from widget import *
-
-pygame.init()
-screen = pygame.display.set_mode((800, 600))
-pygame.display.set_caption('GUI')
+from label import *
 
 
 def main():
@@ -18,10 +21,10 @@ def main():
     img1 = pygame.image.load('./res/button_light_blue.png')
     img2 = pygame.image.load('./res/button_yellow.png')
     img3 = pygame.image.load('./res/button_blue.png')
-    button2 = Button(pos=(0, 100), normal_image=img1, hover_image=img3, active_image=img2)
+    button2 = Button(normal_image=img1, hover_image=img3, active_image=img2)
     # gui.add_button(button2)
 
-    menuitem = MenuItem(pos=(200, 0), text='菜单项')
+    menuitem = MenuItem(text='菜单项')
     # gui.add_button(menuitem)
 
     menubar = MenuBar()
@@ -35,7 +38,7 @@ def main():
 
     menu2 = Menu(text='帮助')
     menubar.add_menu(menu2)
-    menu2.add_menuitem(MenuItem(text='About'))
+    menu2.add_menuitem(MenuItem(text='关于'))
     menu2.add_menuitem(MenuItem(text='退出'))
 
     # gui.add_menubar(menubar)
@@ -44,10 +47,13 @@ def main():
     inputbox = InputBox()
     # gui.add_inputbox(inputbox)
 
-    widget = Widget(pos=(200, 200))
-    # widget.add_inputbox(inputbox)
+    label = Label(text="输入")
+
+    widget = Widget()
+    widget.add_inputbox(inputbox, pos=(60, 30))
     # widget.add_button(button1)
     widget.add_menubar(menubar)
+    widget.add_label(label, pos=(0, 30))
     gui.add_widget(widget)
 
 

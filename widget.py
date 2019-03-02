@@ -7,7 +7,7 @@ from button import *
 
 
 class Widget(GUI, pygame.sprite.Sprite):
-    def __init__(self, size=INIT_WIDGET_SIZE, color=INIT_WIDGET_COLOR, pos=INIT_WIDGET_POS):
+    def __init__(self, size=INIT_WIDGET_SIZE, color=INIT_WIDGET_COLOR):
         pygame.sprite.Sprite.__init__(self)
         GUI.__init__(self)
 
@@ -21,7 +21,6 @@ class Widget(GUI, pygame.sprite.Sprite):
 
         self.image = self.background.copy()
         self.rect = self.image.get_rect()
-        self.rect.x, self.rect.y = pos
 
         # 标记窗口是否可拖拽
         self.enable_drag = False
@@ -32,9 +31,9 @@ class Widget(GUI, pygame.sprite.Sprite):
 
 
     def init_widget(self):
-        exit_button = Button(text='X', size=(30, 30), pos=(self.rect.width - 30, -TITLE_BAR_HEIGHT))
+        exit_button = Button(text='X', size=(30, 30))
         exit_button.bind_active(self.destroy)
-        self.add_button(exit_button)
+        self.add_button(exit_button, pos=(self.rect.width - 30, 0))
 
 
     def destroy(self):
@@ -103,6 +102,9 @@ class Widget(GUI, pygame.sprite.Sprite):
         for widget in self.widget_group:
             widget.rect.x += rel[0]
             widget.rect.y += rel[1]
+        for label in self.label_group:
+            label.rect.x += rel[0]
+            label.rect.y += rel[1]
 
 
     def check_event(self):

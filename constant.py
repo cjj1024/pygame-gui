@@ -23,8 +23,6 @@ ACTIVE = 2
 
 
 # 默认按钮属性
-# 默认按钮位置
-INIT_BUTTON_POS =               (0, 0)
 # 默认按钮大小
 INIT_BUTTON_SIZE =              (120, 40)
 # 默认按钮颜色
@@ -44,8 +42,6 @@ INIT_BUTTON_TEXT_COLOR =        BLACK
 # 默认菜单属性
 # 默认菜单大小
 INIT_MENU_SIZE =                (40, 20)
-# 默认菜单位置
-INIT_MENU_POS =                 (0, 0)
 # 默认菜单背景颜色
 INIT_MENU_COLOR =               WHITE
 # 默认菜单悬浮颜色
@@ -61,24 +57,15 @@ INIT_MENU_TEXT_COLOR =          BLACK
 # 默认菜单项属性
 # 默认菜单项大小
 INIT_MENUITEM_SIZE =            (40, 20)
-# 默认菜单项位置
-INIT_MENUITEM_POS =             (0, 0)
 # 默认菜单项文字大小
 INIT_MENUITEM_TEXT_SIZE =       32
 # 默认菜单项文字颜色
 INIT_MENUITEM_TEXT_COLOR =      BLACK
 
 
-# 默认菜单栏属性
-# 默认菜单栏位置
-INIT_MENUBAR_POS =              (0, 0)
-
-
 # 默认输入框属性
 # 默认输入框大小
 INIT_INPUTBOX_SIZE =            (250, 30)
-# 默认输入框位置
-INIT_INPUTBOX_POS =             (0, 0)
 # 默认输入框文字
 INIT_INPUTBOX_TEXT =            ''
 # 默认输入框文字大小
@@ -89,12 +76,27 @@ INIT_INPUTBOX_COLOR =           WHITE
 INIT_INPUTBOX_TEXT_COLOR =      BLACK
 
 
+# 文字在图片中的起始位置
+LEFT =                          1
+CENTER =                        2
+RIGHT =                         3
+
+
 # 默认窗口属性
 # 默认窗口大小
 INIT_WIDGET_SIZE =              (400, 400)
 # 默认窗口背景颜色
 INIT_WIDGET_COLOR =             WHITE
-# 默认窗口位置
-INIT_WIDGET_POS =               (0, 0)
 # 标题栏高度
 TITLE_BAR_HEIGHT =              30
+
+
+# 默认标签属性
+# 默认标签大小
+INIT_LABEL_SIZE =               (60, 30)
+# 默认标签文字
+INIT_LABEL_TEXT =               'Label'
+# 默认标签文字颜色
+INIT_LABEL_TEXT_COLOR =         BLACK
+# 默认标签大小
+INIT_LABEL_TEXT_SIZE =          16

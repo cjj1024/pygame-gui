@@ -3,7 +3,7 @@ from constant import *
 
 
 class MenuBar(pygame.sprite.Sprite):
-    def __init__(self, pos=INIT_MENUBAR_POS):
+    def __init__(self):
         pygame.sprite.Sprite.__init__(self)
 
         self.menu_group = pygame.sprite.Group()
@@ -11,7 +11,7 @@ class MenuBar(pygame.sprite.Sprite):
         self.total_width = 0
 
         self.image = None
-        self.rect = pygame.Rect(pos, (0, 0))
+        self.rect = pygame.Rect(0, 0, 0, 0)
 
 
     def add_menu(self, menu):

@@ -10,12 +10,12 @@ from constant import *
 # active 鼠标点击控件
 # 当发生状态改变时会调用相应的状态改变函数和状态函数
 class ClickableObject():
-    def __init__(self, pos, size):
+    def __init__(self, size):
         self.normal_function = None
         self.active_function = None
         self.hover_function = None
 
-        self.rect = pygame.Rect(pos, size)
+        self.rect = pygame.Rect((0, 0), size)
 
         self.change_status = False
 
