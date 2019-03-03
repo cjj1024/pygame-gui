@@ -1,31 +1,19 @@
 import pygame
+import sys
+import os
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption('GUI')
 
-from button import *
-from gui import *
-from menuitem import *
-from menubar import *
-from menu import *
-from inputbox import *
-from widget import *
-from label import *
+sys.path.append('../')
+os.chdir('../')
 
+from gui import *
+from menubar import *
 
 def main():
     gui = GUI()
-    button1 = Button()
-    gui.add_button(button1, pos=(0, 30))
-    img1 = pygame.image.load('./res/button_light_blue.png')
-    img2 = pygame.image.load('./res/button_yellow.png')
-    img3 = pygame.image.load('./res/button_blue.png')
-    button2 = Button(normal_image=img1, hover_image=img3, active_image=img2)
-    gui.add_button(button2, pos=(120, 30))
-
-    menuitem = MenuItem(text='菜单项')
-    # gui.add_button(menuitem)
 
     menubar = MenuBar()
 
@@ -42,20 +30,6 @@ def main():
     menu2.add_menuitem(MenuItem(text='退出'))
 
     gui.add_menubar(menubar, pos=(0, 0))
-
-
-    inputbox = InputBox()
-
-    label = Label(text="输入")
-    gui.add_label(label, pos=(0, 90))
-    gui.add_inputbox(inputbox, pos=(label.image.get_width(), 90))
-
-    widget = Widget()
-    # widget.add_inputbox(inputbox, pos=(60, 30))
-    # widget.add_button(button1)
-    # widget.add_menubar(menubar)
-    # widget.add_label(label, pos=(0, 30))
-    gui.add_widget(widget)
 
 
     clock = pygame.time.Clock()

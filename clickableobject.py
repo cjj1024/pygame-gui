@@ -12,8 +12,12 @@ from constant import *
 class ClickableObject():
     def __init__(self, size):
         self.normal_function = None
+        self.normal_function_args = None
         self.active_function = None
+        self.active_function_args = None
         self.hover_function = None
+        self.hover_function_args = None
+
 
         self.rect = pygame.Rect((0, 0), size)
 
@@ -83,7 +87,7 @@ class ClickableObject():
     # 普通状态
     def normal(self):
         if self.normal_function:
-            self.normal_function()
+            self.normal_function(*self.normal_function_args)
 
 
     # 状态转为普通状态
@@ -94,7 +98,7 @@ class ClickableObject():
     # 鼠标指针悬浮在控件上方
     def hover(self):
         if self.hover_function:
-            self.hover_function()
+            self.hover_function(*self.hover_function_args)
 
 
     # 状态转为点击状态
@@ -105,19 +109,22 @@ class ClickableObject():
     # 点击状态
     def active(self):
         if self.active_function:
-            self.active_function()
+            self.active_function(*self.active_function_args)
 
 
-    def bind_normal(self, func):
+    def bind_normal(self, func, *args):
         self.normal_function = func
+        self.normal_function_args = args
 
 
-    def bind_hover(self, func):
+    def bind_hover(self, func, *args):
         self.hover_function = func
+        self.hover_function_args = args
 
 
-    def bind_active(self, func):
+    def bind_active(self, func, *args):
         self.active_function = func
+        self.active_function_args = args
 
 
     def adjust_pos(self, x, y):

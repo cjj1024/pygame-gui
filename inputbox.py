@@ -31,8 +31,8 @@ class InputBox(ClickableObject, TextObject, pygame.sprite.Sprite):
         elif key >= 97 and key <= 122 or key >= 48 and key <= 57:
             self.text += chr(key)
 
-        self.image = self.merge_text_image(self.text, self.text_size, self.text_color,
-                                           self.background_image, False, LEFT)
+            self.image = self.merge_text_image(self.text, self.text_size, self.text_color,
+                                               self.background_image, False, LEFT)
 
 
     def process_event(self, event):
@@ -47,3 +47,6 @@ class InputBox(ClickableObject, TextObject, pygame.sprite.Sprite):
         elif event.type == pygame.KEYDOWN and self.is_enable_input:
             self.get_input(event.key)
 
+
+    def get_text(self):
+        return self.text
