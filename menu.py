@@ -49,4 +49,12 @@ class Menu(Button):
             menuitem.adjust_pos(x, y)
 
 
+    def process_event(self, event):
+        super(Menu, self).process_event(event)
 
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            self.is_expand = False
+
+        if self.is_expand:
+            for menuitem in self.menuitem_group:
+                menuitem.process_event(event)

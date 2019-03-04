@@ -5,13 +5,16 @@ YELLOW =        (0, 255, 0)
 BLUE =          (0, 0, 255)
 WHITE =         (255, 255, 255)
 BLACK =         (0, 0, 0)
-DEEPSKYBLUE =   (0, 191, 255)
 SPRINGGREEN =   (0, 255, 127)
 GREY =          (220, 220, 220)
 DARKSEAGREEN =  (193, 255, 193)
 SEAGREEN =      (67, 205, 128)
 LIGHTSKYBLUE1 = (176, 226, 255)
 LIGHTSKYBLUE2 = (164, 211, 238)
+DEEPSKYBLUE1 =  (0, 191, 255)
+DEEPSKYBLUE2 =  (0, 178, 238)
+DEEPSKYBLUE3 =  (0, 154, 205)
+
 
 # 可点击控件的状态
 # 正常状态
@@ -28,9 +31,9 @@ INIT_BUTTON_SIZE =              (120, 40)
 # 默认按钮颜色
 INIT_BUTTON_NORMAL_COLOR =      WHITE
 # 默认按钮悬浮颜色
-INIT_BUTTON_HOVER_COLOR =       RED
+INIT_BUTTON_HOVER_COLOR =       WHITE
 # 默认按钮点击颜色
-INIT_BUTTON_ACTIVE_COLOR =      SPRINGGREEN
+INIT_BUTTON_ACTIVE_COLOR =      WHITE
 # 默认按钮文字
 INIT_BUTTON_TEXT =              'Button'
 # 默认按钮文字大小
@@ -45,9 +48,9 @@ INIT_MENU_SIZE =                (40, 20)
 # 默认菜单背景颜色
 INIT_MENU_COLOR =               WHITE
 # 默认菜单悬浮颜色
-INIT_MENU_HOVER_COLOR =         LIGHTSKYBLUE1
+INIT_MENU_HOVER_COLOR =         DEEPSKYBLUE1
 # 默认菜单点击颜色
-INIT_MENU_ACTIVE_COLOR =        LIGHTSKYBLUE2
+INIT_MENU_ACTIVE_COLOR =        DEEPSKYBLUE2
 # 默认菜单文字大小
 INIT_MENU_TEXT_SIZE =           32
 # 默认菜单文字颜色
@@ -57,6 +60,8 @@ INIT_MENU_TEXT_COLOR =          BLACK
 # 默认菜单项属性
 # 默认菜单项大小
 INIT_MENUITEM_SIZE =            (40, 20)
+# 默认菜单项悬浮颜色
+INIT_MENUITEM_HOVER_COLOR =     DEEPSKYBLUE3
 # 默认菜单项文字大小
 INIT_MENUITEM_TEXT_SIZE =       32
 # 默认菜单项文字颜色
