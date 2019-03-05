@@ -25,9 +25,9 @@ def main():
     menu.add_menuitem(menuitem3)
 
     menu2 = Menu(text='帮助')
-    menubar.add_menu(menu2)
     menu2.add_menuitem(MenuItem(text='关于'))
     menu2.add_menuitem(MenuItem(text='退出'))
+    menubar.add_menu(menu2)
 
     gui.add_menubar(menubar, pos=(0, 0))
 

@@ -1,4 +1,4 @@
-from menuitem import *
+from . menuitem import *
 
 
 class Menu(Button):
@@ -17,14 +17,13 @@ class Menu(Button):
 
     def update(self, screen):
         super().update()
+        self.menuitem_group.update()
         if self.is_expand:
-            self.menuitem_group.update()
             self.menuitem_group.draw(screen)
 
 
     def add_menuitem(self, menuitem):
-        menuitem.rect.x = self.rect.x
-        menuitem.rect.y = self.rect.y + self.total_height
+        menuitem.adjust_pos(self.rect.x - menuitem.rect.x, self.rect.y + self.total_height - menuitem.rect.y)
         self.total_height += menuitem.rect.height
         self.menuitem_group.add(menuitem)
 
@@ -52,9 +51,9 @@ class Menu(Button):
     def process_event(self, event):
         super(Menu, self).process_event(event)
 
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            self.is_expand = False
-
         if self.is_expand:
             for menuitem in self.menuitem_group:
                 menuitem.process_event(event)
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            self.is_expand = False
