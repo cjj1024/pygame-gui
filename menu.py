@@ -1,4 +1,4 @@
-from . menuitem import *
+from menuitem import *
 
 
 class Menu(Button):

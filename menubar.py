@@ -1,5 +1,5 @@
-from . menu import *
-from . constant import *
+from menu import *
+from constant import *
 
 
 class MenuBar(pygame.sprite.Sprite):

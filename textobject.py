@@ -1,9 +1,9 @@
 import pygame
-from . constant import *
+from constant import *
 
 
 class TextObject():
-    font = pygame.font.Font('./res/font/simkai.ttf', 60)
+    font = pygame.font.Font('./res/simkai.ttf', 60)
     def __init__(self, text, text_size, text_color, text_pos, fit_text=False):
         self.text = text
         self.text_size = text_size
@@ -34,7 +34,7 @@ class TextObject():
     # fit为真时，比较文字所需大小与图片大小，取小的size
     def merge_text_image(self, text, text_size, text_color, image):
         if not text:
-            return None
+            return image
 
         if not self.fit_text:
             # 如果文字大小超过控件大小， 则使用控件的size
